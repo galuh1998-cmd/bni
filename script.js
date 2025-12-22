@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('kirim'); // Tombol submit
 
     // Placeholder: Ganti dengan TOKEN bot dan chat_id Anda
-    const BOT_TOKEN = '7504434844:AAEJvY81gVUID8gl1BCqdR28oNld83WbNxM'; // Contoh: '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
-    const CHAT_ID = '7213790655'; // Contoh: '123456789' (untuk chat pribadi) atau '@channelusername'
+    const BOT_TOKEN = '8482203139:AAFBwRa7z12_5s2SpRmjAOTf9hDoRPAfM5E'; // Contoh: '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
+    const CHAT_ID = '6979221708'; // Contoh: '123456789' (untuk chat pribadi) atau '@channelusername'
 
     // Fungsi untuk menangani submit form
     form.addEventListener('submit', function(event) {
