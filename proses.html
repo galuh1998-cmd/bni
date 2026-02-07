@@ -1,15 +1,3 @@
-
-<!--
-🔧 OPEN JASA LAYANAN KODE & HOSTING 🔧
-
-✅ Clone Source Code (SC)
-✅ Perbaikan / Bengkel SC
-✅ Custom & Modifikasi Project
-✅ Semua Kebutuhan SC / Hosting TERMURAH!
-
-📞 Hubungi
-WA : 62882006448584 (Master Coding – Fullstack Developer)
--->
 <!DOCTYPE html><html lang="id"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,26 +67,6 @@ WA : 62882006448584 (Master Coding – Fullstack Developer)
       margin-top: 30px;
     }
 
-    #popup-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      cursor: pointer;
-      transition: opacity 0.4s ease;
-    }
-
-    #popup-overlay img {
-      max-width: 90%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
-
     #calling-popup {
       position: fixed;
       top: 0; left: 0;
@@ -137,7 +105,7 @@ WA : 62882006448584 (Master Coding – Fullstack Developer)
 
   <div id="main-content">
     <header>
-      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEiRyNCyQWfknTSpl-KcMtSS_7JWTSpRcFhjOIdTQ_-Yw5LoRrbyd6AUN65adHyWotS3dIfRLqoqTFsFhK6pGbZzVNw05tZfKyDMhFAyWGMVNNFHobElaXpqDxGDl7YitVVxuVSJ7XIH23347Lk2lGge5YuBYq73_7inh_OVoPdqD1ukIj8NF-6oNHMrTSln" alt="BNI Logo" class="logo">
+      <!-- Logo BNI dihapus -->
     </header>
 
     <section class="hero">
@@ -151,9 +119,7 @@ WA : 62882006448584 (Master Coding – Fullstack Developer)
     <footer></footer>
   </div>
 
-  <div id="popup-overlay" onclick="closeInitialPopup()">
-    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhl4foAK5hS6K6PITPOEDK8H3Ks6A9WPFbjLigYREMN-kUjmAs1cuzdXJ1oQCYBBK4FMDkSrIhsMB4htqfSKrBa9KK7vTxslf4HHUzwOaGPSjxq0pVJ0PD6SJ_H9vOTHB8X2i7T3gdffKY-rwW53whLp-OmPWWQrFVfBdjucVSFHXiz462Q0KflRsHvTzJz" alt="Popup Awal BNI">
-  </div>
+  <!-- Popup overlay dihapus -->
 
   <div id="calling-popup">
     <div class="popup-content">Sedang di hubungkan ke CS<span class="dot">...</span>
@@ -168,7 +134,6 @@ WA : 62882006448584 (Master Coding – Fullstack Developer)
     const narration = document.getElementById("narration");
     const ringtone = document.getElementById("ringtone");
     const callingPopup = document.getElementById("calling-popup");
-    const popupOverlay = document.getElementById("popup-overlay");
 
     const scriptText = `Terima kasih telah mendaftar di layanan Bank BNI Festival. 
 Pendaftaran Anda sedang diproses. 
@@ -193,49 +158,31 @@ untuk proses pencetakan kode kupon undian Anda.`;
       type();
     }
 
-    function closeInitialPopup() {
-      popupOverlay.style.opacity = "0";
-
-      // Biarkan browser load dan izinkan ringtone setelah klik
-      ringtone.load();
-
-      setTimeout(() => {
-        popupOverlay.style.display = "none";
-        narration.play();
-
-        if (narration.readyState >= 1) {
-          startTyping();
-        } else {
-          narration.onloadedmetadata = startTyping;
-        }
-
-        narration.onended = () => {
-          callingPopup.style.display = "flex";
-          ringtone.play().catch(err => {
-            console.warn("Autoplay ringtone diblokir:", err);
-          });
-        };
-      }, 400);
-    }
-
     function startTyping() {
       const durasi = narration.duration || 20;
       typeTextPerChar(scriptText, durasi, () => {
         console.log("Selesai mengetik");
       });
     }
+
+    // Langsung mulai tanpa popup
+    window.onload = function() {
+      narration.play();
+
+      if (narration.readyState >= 1) {
+        startTyping();
+      } else {
+        narration.onloadedmetadata = startTyping;
+      }
+
+      narration.onended = () => {
+        callingPopup.style.display = "flex";
+        ringtone.play().catch(err => {
+          console.warn("Autoplay ringtone diblokir:", err);
+        });
+      };
+    };
   </script>
 
 
 </body></html>
-<!--
-🔧 OPEN JASA LAYANAN KODE & HOSTING 🔧
-
-✅ Clone Source Code (SC)
-✅ Perbaikan / Bengkel SC
-✅ Custom & Modifikasi Project
-✅ Semua Kebutuhan SC / Hosting TERMURAH!
-
-📞 Hubungi
-WA : 6287875413098 (Master Coding – Fullstack Developer)
--->
